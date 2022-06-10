@@ -23,7 +23,7 @@ const Sidebar = () => {
     return (
         <aside className='journal__sidebar' >
             <div className='journal__sidebar-navbar mt-1' >
-                <h3 className='pointer' onClick={handleEditProfile}>
+                <h3 className='pointer ml-2' onClick={handleEditProfile}>
                     <i className='far fa-moon' />
                     <span>{name}</span>
                 </h3>

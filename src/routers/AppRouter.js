@@ -12,6 +12,7 @@ import LoadingScreen from "../components/ui/LoadingScreen";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import JournalRouter from "./JournalRouter";
+import { startLoadingNotes } from "../actions/notes";
 
 const AppRouter = () => {
 
@@ -20,10 +21,11 @@ const AppRouter = () => {
     const [checking, setChecking] = useState(true)
 
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
+        firebase.auth().onAuthStateChanged(async (user) => {
             if (user?.uid) {
                 dispatch(login(user.uid, user.displayName, user.email))
                 setIsLoggedIn(true)
+                dispatch(startLoadingNotes())
             } else {
                 setIsLoggedIn(false)
             }
